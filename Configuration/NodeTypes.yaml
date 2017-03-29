@@ -1,0 +1,423 @@
+# If you need more than just the "main" content area you can
+# uncomment the snippet below. It will add a "sidebar" area
+# to your pages. You can add as many areas as you like, still
+# only those that are rendered in your TypoScript and Template
+# are visible on your page.
+---
+#'TYPO3.Neos.NodeTypes:Page':
+#  childNodes:
+#    sidebar:
+#      type: 'TYPO3.Neos:ContentCollection'
+
+'TYPO3.Neos.NodeTypes:Page':
+  childNodes:
+    sidebar:
+      type: 'TYPO3.Neos:ContentCollection'
+    teaser:
+      type: 'TYPO3.Neos:ContentCollection'
+    lastNews:
+      type: 'TYPO3.Neos:ContentCollection'      
+  properties:
+    layout:
+      ui:
+        inspector:
+          group: layout
+          editorOptions:
+            values:
+              'default':
+                label: 'Страница по умолчанию (2 колонки)'
+              'oneColumnPage':
+                label: 'Страница в одну колонку'
+              'newsPage':
+                label: 'Страница новостей' 
+              'portfolioPage':
+                label: 'Страница портфолио'                                
+    subpageLayout:
+      ui:
+        inspector:
+          group: layout
+          editorOptions:
+            values:
+              'default':
+                label: 'Страница по умолчанию (2 колонки)'
+              'oneColumnPage':
+                label: 'Страница в одну колонку'
+              'newsPage':
+               label: 'Страница новостей'
+              'portfolioPage':
+                label: 'Страница портфолио'                
+ 
+ # Text mixin
+'TYPO3.Neos.NodeTypes:TextMixin':
+  abstract: TRUE
+  properties:
+    text:
+      type: string
+      defaultValue: ''
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: '<p>Enter text here</p>'
+          autoparagraph: TRUE
+          'format':
+            'strong': TRUE
+            'em': TRUE
+            'u': TRUE
+            'i': FALSE
+            'b': FALSE
+            'sub': TRUE
+            'sup': TRUE
+            'del': TRUE
+            'p': TRUE
+            'h1': TRUE
+            'h2': TRUE
+            'h3': TRUE
+            'h4': TRUE
+            'h5': TRUE
+            'pre': TRUE
+            'removeFormat': TRUE
+            'code': TRUE           
+          'table':
+            'table': TRUE
+          'list':
+            'ol': TRUE
+            'ul': TRUE
+          'link':
+            'a': TRUE
+          'alignment':
+            'left': TRUE
+            'center': TRUE
+            'right': TRUE
+            'justify': TRUE          
+#          'formatlesspaste':
+#            'button': TRUE
+#            'formatlessPasteOption': TRUE
+
+##
+# Adjust the "Headline" node type:
+# Enable 4th and 5th level and disable "p" in the aloha format selector of the "title" property
+#
+'TYPO3.Neos.NodeTypes:Headline':
+  properties:
+    'title':
+      ui:
+        aloha:
+          'format':
+            'h4': TRUE
+            'h5': TRUE 
+
+##
+# Adjust the "ThreeColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:ThreeColumn':
+  properties:
+    'layout':
+      defaultValue: '4-4-4'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '33-33-33': ~
+              '50-25-25': ~
+              '25-50-25': ~
+              '25-25-50': ~
+              '4-4-4':
+                label: '33% / 33% / 33%'
+              '6-3-3':
+                label: '50% / 25% / 33%'
+              '3-6-3':
+                label: '25% / 50% / 25%'
+              '3-3-6':
+                label: '25% / 25% / 50%'
+                
+##
+# Adjust the "TwoColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:TwoColumn':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+                
+##
+# Adjust the "FourColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:FourColumn':
+  properties:
+    'layout':
+      defaultValue: '3-3-3-3'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '25-25-25-25': ~
+              '3-3-3-3':
+                label: '25% / 25% / 25% / 25%'
+                
+                
+##
+# A "Header Teaser" content element
+#
+'T3Studio.Typo3RuNet:HeaderTeaser':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Header Teaser'
+    group: 'general'
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 1
+  properties:
+    headline:
+      type: string
+      defaultValue: 'Some title'
+      ui:
+        label: 'Headline'
+        inlineEditable: TRUE
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          
+          
+#Bootstrap Tabs
+'T3Studio.Typo3RuNet:Tabs':
+  superTypes: ['TYPO3.Neos:Content']
+  childNodes:
+    tabItems:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Tabs'
+    group: 'plugins'
+    icon: 'icon-picture'
+    inlineEditable: TRUE
+    inspector:
+      groups:
+        'options':
+          label: 'Tab Options'
+  properties:
+    fade:
+      type: boolean
+      ui:
+        label: 'Fade'
+        inspector:
+          group: 'options'
+
+'T3Studio.Typo3RuNet:Tab':
+  superTypes: ['TYPO3.Neos:Content']
+  childNodes:
+    content:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Tab Element'
+    group: 'plugins'
+    icon: 'icon-picture'
+    inlineEditable: TRUE
+    inspector:
+     groups:
+       'options':
+         label: 'Tab Options'
+  properties:
+    tabTitle:
+      type: string
+      ui:
+        label: 'Tab Title'
+        inspector:
+          group: 'options'
+          
+# Images rendering
+'TYPO3.Neos.NodeTypes:Image':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+    - 'TYPO3.Neos.NodeTypes:ContentImageMixin'
+    - 'T3Studio.Gallery:ImageLightboxMixin'
+
+'TYPO3.Neos.NodeTypes:TextWithImage':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+    - 'TYPO3.Neos.NodeTypes:TextMixin'
+    - 'TYPO3.Neos.NodeTypes:ContentImageMixin'
+    - 'T3Studio.Gallery:ImageLightboxMixin'
+    
+'T3Studio.Gallery:ImageLightboxMixin':
+  abstract: TRUE
+  properties:
+    clickEnlarge:
+      type: boolean
+      ui:
+        label: 'ClickEnlarge'
+        inspector:
+          group: 'image' 
+          
+#Carousel          
+'T3Studio.Typo3RuNet:Carousel':
+  superTypes: ['TYPO3.Neos:Content']
+  childNodes:
+    carouselItems:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Carousel'
+    group: 'plugins'
+    icon: 'icon-picture'
+    inlineEditable: TRUE
+    
+#Portfolio Container  
+'T3Studio.Typo3RuNet:Portfolio':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    group: 'plugins'
+    label: Portfolio Container
+    icon: icon-columns
+    inlineEditable: true
+    inspector:
+      groups:
+        display:
+          label: Display
+          position: 6           
+  childNodes:
+    column0:
+      type: 'TYPO3.Neos:ContentCollection'
+
+#Portfolio Item      
+'T3Studio.Typo3RuNet:PortfolioItem':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Portfolio Item'
+    group: 'structure'
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 1
+  properties:
+    headline:
+      type: string
+      defaultValue: 'Enter title'
+      ui:
+        label: 'Headline'
+        inlineEditable: TRUE
+    text:
+      type: string
+      defaultValue: 'Portfolio Item Description'
+      ui:
+        label: 'Text'
+        reloadIfChanged: TRUE           
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+ 
+ #Portfolio plugin         
+'T3Studio.Portfolio:Plugin':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'T3Studio Portfolio'
+    group: 'plugins'
+    
+##
+# A "Youtube" content element
+#
+'T3Studio.Typo3RuNet:YouTube':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    label: YouTube
+    icon: 'icon-youtube'
+    inspector:
+      groups:
+        'video':
+          label: Video
+  properties:
+    'video':
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Youtube video ID'
+        reloadIfChanged: TRUE
+        inlineEditable: TRUE
+        inspector:
+          group: 'video'
+    'width':
+      type: integer
+      defaultValue: 640
+      ui:
+        label: 'Width'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+    'height':
+      type: integer
+      defaultValue: 480
+      ui:
+        label: 'Height'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+          
+          
+          
+
+
+
+'Lelesys.Plugin.ContactForm:ContactForm':
+  superTypes:
+    - 'TYPO3.Neos:Plugin'
+  ui:
+    label: 'Lelesys Contact Form'
+    inlineEditable: true
+    icon: 'icon-puzzle-piece'
+    inspector:
+      groups:
+        contactform:
+          label: Contact Form
+          priority: 30
+  properties:
+    formIdentifier:
+      type: string
+      defaultValue: 'contactForm'
+      ui:
+        label: 'Form Identifier'
+        inspector:
+          group: contactform
+        reloadIfChanged: true
+    formName:
+      type: string
+      defaultValue: 'Default Form'
+      ui:
+        label: 'Form Name'
+        inspector:
+          group: contactform
+        reloadIfChanged: true
+
+'Lelesys.Plugin.ContactForm:FormPost':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Form Post'
+    inlineEditable: true                                                                         

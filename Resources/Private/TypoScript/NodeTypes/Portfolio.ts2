@@ -1,0 +1,7 @@
+prototype(T3Studio.Typo3RuNet:Portfolio) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/Portfolio.html'
+        columnContent = TYPO3.Neos:ContentCollection
+        columnContent {
+                nodePath = 'column0'
+        }
+}

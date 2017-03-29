@@ -1,0 +1,5 @@
+prototype(T3Studio.Typo3RuNet:HeaderTeaser) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/HeaderTeaser.html'
+        headline = ${q(node).property('headline')}
+        image = ${q(node).property('image')}
+}

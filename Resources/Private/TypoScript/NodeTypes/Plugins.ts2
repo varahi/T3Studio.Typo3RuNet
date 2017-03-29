@@ -1,0 +1,6 @@
+prototype(T3Studio.Portfolio:Plugin) < prototype(TYPO3.Neos:Plugin)
+prototype(T3Studio.Portfolio:Plugin) {
+     package = 'T3Studio.Portfolio'
+     controller = 'Item'
+     action = 'index'
+}

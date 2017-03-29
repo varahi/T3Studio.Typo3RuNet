@@ -1,0 +1,16 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+
+<div class="last-news-item">
+	<h4><neos:link.node node="{node}">{title}</neos:link.node></h4>
+		<f:if condition="{dateTime}">
+			<span><i><f:format.date format="{configuration.dateFormat}">{dateTime}</f:format.date></i></span>
+		</f:if>
+		<span>{f:if(condition: '{authorName}', then: ', {f:translate(id: \'автор\', package: \'Lelesys.News\')}: {authorName}', else: '')}</span>
+		<br /><br />
+		{teaserText -> f:format.stripTags() -> f:format.crop(maxCharacters: 200, append: '...')}
+		<neos:link.node node="{node}">
+      <p>Подробнее...</p>
+		</neos:link.node>
+</div>

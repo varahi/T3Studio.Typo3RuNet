@@ -1,0 +1,65 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+
+<div class="list-news-item" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+	<meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<neos:uri.node node="{node}" absolute="{true}" />"/>
+
+	<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <img itemprop="url image" src="{f:uri.resource(path: 'Images/logo_new.jpg', package: 'T3Studio.Typo3RuNet')}" width="195" height="57" style="display:none;"/>
+        <meta itemprop="width" content="195">
+        <meta itemprop="height" content="57">
+    </div>
+    <meta itemprop="name" content="Т3 Студия - Создание сайтов на TYPO3 CMS и Neos CMS ">
+    <meta itemprop="telephone" content="+7 950 001 85 15">
+    <meta itemprop="address" content="Санкт-Петербург">	
+	</span> 
+			
+  <h3><neos:link.node node="{node}"><span itemprop="headline">{title}</span></neos:link.node></h3>
+	<f:if condition="{thumbnailImage}">
+		<figure class="typo3-neos-alignment-left">
+		  <neos:link.node node="{node}">
+			 <m:image asset="{thumbnailImage.properties.image}" maximumWidth="300" 
+			 maximumHeight="300" alt="{thumbnailImage.properties.alternativeText}" class="img-thumbnail" />
+		  </neos:link.node>
+		</figure>
+		<img itemprop="image" src="{m:uri.image(image:thumbnailImage.properties.image)}" style="display:none;" />
+	</f:if>
+
+  <div class="news-meta-info">	
+		<f:if condition="{dateTime}">
+			<span class="date"><f:format.date format="{configuration.dateFormat}">{dateTime}</f:format.date></span> |
+			<meta itemprop="datePublished" content="<f:format.date format="{configuration.itempropDateFormat}">{dateTime}</f:format.date>" />
+			<meta itemprop="dateModified" content="<f:format.date format="{configuration.itempropDateFormat}">{dateTime}</f:format.date>" />
+		</f:if>
+    <f:if condition="{categories}">
+      <f:then>
+          <f:for each="{categories}" as="category" iteration="catIterator">
+            <span>
+              <neos:link.node node="{category}">{category.properties.title}</neos:link.node>{f:if(condition: '{catIterator.isLast}', then: '', else: ',')}
+            </span>
+          </f:for>
+          |
+      </f:then>
+      <f:else>
+        <f:if condition="{primaryCategory}">
+          <f:then>
+                <neos:link.node node="{primaryCategory}">{primaryCategory.properties.title}</neos:link.node>
+              </span>
+            </span>
+          </f:then>
+        </f:if>
+      </f:else> 
+    </f:if>			
+		<span class="author" itemprop="author">{f:if(condition: '{authorName}', then: '{f:translate(id: \'автор\', package: \'Lelesys.News\')}: {authorName}', else: '')}</span>
+		<br />
+	</div>	
+		
+		<div itemprop="description">{teaserText -> f:format.stripTags() -> f:format.crop(maxCharacters: 450, append: '...')}</div>
+		<neos:link.node node="{node}">
+			<p class="more">Подробнее...</p>
+		</neos:link.node>
+	
+</div>

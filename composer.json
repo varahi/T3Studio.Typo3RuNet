@@ -1,0 +1,1 @@
+{"name":"t3studio\/typo3runet","type":"typo3-flow-site","description":"Add description here","require":{"typo3\/neos":"*","typo3\/neos-nodetypes":"*"},"autoload":{"psr-0":{"T3Studio\\Typo3RuNet":"Classes"}}}

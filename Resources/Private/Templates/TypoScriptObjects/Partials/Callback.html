@@ -1,0 +1,19 @@
+<div class="callback">
+  <a class="popup-with-form btn btn-sm btn-primary" href="#callback-form">Заказать обратный звонок</a>
+</div>
+<div class="clear"></div>
+<div id="callback-form" class="white-popup-block mfp-hide"> 
+  <div class="callback-phone-icon"></div>   
+  <div class="callback-title">
+    Заказать обратный звонок
+  </div>
+  <form id="callback" action="/mail/callback.php" method="post">
+    <input type="text" class="form-control input-callback validate[required]" placeholder="Введите ваше имя*" name="fromname"  />
+    <input type="text" class="form-control input-callback validate[required]" placeholder="Введите ваш телефон*" name="fromphone" />
+    <div class="clear"></div>
+    <div class="callback-submit">
+      <input type="submit" value="Отправить" id="submit" class="callback-btn btn-warning" name="callbackBtn" />
+    </div>  
+  </form>      
+  </div> 
+  

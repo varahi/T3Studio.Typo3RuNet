@@ -1,0 +1,14 @@
+prototype(T3Studio.Typo3RuNet:Tabs) {
+	templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/Tabs.html'
+	tabItems = TYPO3.Neos:ContentCollection {
+		nodePath = 'tabItems'
+		attributes.class = 'tab-content neos-contentcollection'
+	}
+	tabItemNodes = ${q(node).children('tabItems').children('[instanceof T3Studio.Typo3RuNet:Tab]').get()}
+}
+prototype(T3Studio.Typo3RuNet:Tab) {
+	templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/Tab.html'
+	content = TYPO3.Neos:ContentCollection {
+		nodePath = 'content'
+	}
+}

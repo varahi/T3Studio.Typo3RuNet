@@ -1,0 +1,19 @@
+#prototype(Ttree.Plugin.Seo:StaticPageTitle) < prototype(TYPO3.TypoScript:Value) {
+#  	value = 'Т3 Студия - Создание сайтов на CMS TYPO3 и Neos CMS'
+#}
+
+prototype(Ttree.Plugin.Seo:GenericTitle) < prototype(TYPO3.TypoScript:Value) {
+  	value = ${q(node).property('metaTitle') ? q(node).property('metaTitle') : q(node).property('title')}
+}
+
+prototype(Ttree.Plugin.Seo:RawPageTitle) < prototype(TYPO3.TypoScript:Value) {
+ 	pageTitle = Ttree.Plugin.Seo:GenericTitle
+	#staticTitle = Ttree.Plugin.Seo:StaticPageTitle
+	#value = ${this.pageTitle + " - " + this.staticTitle}
+	value = ${this.pageTitle}
+}
+
+prototype(Ttree.Plugin.Seo:PageTitle) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'title'
+	content = Ttree.Plugin.Seo:RawPageTitle
+}

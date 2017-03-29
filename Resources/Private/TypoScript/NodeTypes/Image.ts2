@@ -1,0 +1,6 @@
+prototype(TYPO3.Neos.NodeTypes:Image) {
+       partialRootPath = 'resource://T3Studio.Typo3RuNet/Private/Templates/NodeTypes/Partials'
+}
+prototype(TYPO3.Neos.NodeTypes:TextWithImage) {
+       partialRootPath = 'resource://T3Studio.Typo3RuNet/Private/Templates/NodeTypes/Partials'
+}

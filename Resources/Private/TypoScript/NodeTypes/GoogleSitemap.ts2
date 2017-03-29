@@ -1,0 +1,12 @@
+root.googleSitemap {
+  @position = 'start'
+  condition = ${request.parentRequest.uri.path == '/sitemap.xml'}
+  renderPath = '/googleSitemap'
+}
+googleSitemap = T3Studio.Typo3RuNet:googleSitemap
+prototype(T3Studio.Typo3RuNet:googleSitemap) < prototype(TYPO3.Neos:Menu) {
+  #@class = 'T3Studio\\Typo3RuNet\\TypoScript\\SiteMapXml'
+  maximumLevels = 10
+  entryLevel = 1
+  templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/googleSitemap.xml'
+}

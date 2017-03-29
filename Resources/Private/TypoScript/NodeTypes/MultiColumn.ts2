@@ -1,0 +1,8 @@
+##
+# Adjust "MultiColumn" element to Twitter bootstrap CSS classes
+#
+prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
+	templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/MultiColumn.html'
+	attributes.class = 'row'
+	columns.iterationName = 'multiColumnIteration'
+}

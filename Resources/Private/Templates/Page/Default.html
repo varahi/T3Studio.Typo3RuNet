@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace bootstrap=TYPO3\Twitter\Bootstrap\ViewHelpers}
+<html>
+<head>
+  <f:section name="metadata">
+   <f:render partial="Meta" arguments="{_all}" />
+  </f:section>    
+	<f:section name="stylesheets">
+    <f:render partial="StyleSheets" arguments="{_all}" />
+	</f:section>
+	<f:section name="headScripts">
+            
+	</f:section>
+</head>
+<body>
+<f:section name="body">	
+    <div class="main-wrapper">
+    <!-- Begin page content -->
+    <div class="container main-page">
+      <div class="page-header">
+          {parts.mainMenu -> f:format.raw()}
+      </div>  
+      <div class="row">
+        <div class="col-md-9">
+          <f:render partial="Subheader" arguments="{_all}"/> 
+          <f:render partial="Share42" arguments="{_all}"/> 
+          <div class="content page">
+            <div class="text-area">
+              {parts.breadcrumb -> f:format.raw()} 
+              {content.main -> f:format.raw()}  
+              <div class="clear"></div>
+            </div>                 
+          </div>        
+        </div>
+        <div class="col-md-3 col-sm-offset-0 right-column">
+          {parts.secondLevelMenu -> f:format.raw()}
+          {lastNews -> f:format.raw()}
+          <f:render partial="Vk" arguments="{_all}"/> 
+        </div>  
+      </div>
+    </div>
+    <f:render partial="Footer" arguments="{_all}"/>
+    {footer -> f:format.raw()}
+    </div>	
+	
+</f:section>
+<f:section name="bodyScripts">
+  <f:render partial="BodyScripts" arguments="{_all}" /> 
+</f:section>
+</body>
+</html>

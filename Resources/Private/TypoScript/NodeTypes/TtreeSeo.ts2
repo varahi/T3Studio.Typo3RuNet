@@ -1,0 +1,7 @@
+#prototype(Ttree.Plugin.Seo:TwitterCard) {
+#  hasTwitterCard.@process.event = ${q(documentNode).is('[instanceof Lelesys.News:List]') ? TRUE : value}
+#}
+#prototype(Ttree.Plugin.Seo:TwitterCardAbstract) {
+#  twitterSite = '@t3studio'
+#  twitterCreator = '@t3studio'
+#}

@@ -1,0 +1,42 @@
+TYPO3:
+  Neos:
+    userInterface:
+      editPreviewModes:
+        print:
+          isEditingMode: FALSE
+          isPreviewMode: TRUE
+          typoScriptRenderingPath: 'print'
+          title: 'Print'
+          position: 200
+          
+##
+# The configuration for news plugin
+#
+Lelesys:
+  News:
+    view:
+      list:
+        pagination:
+          itemsPerPage: 10
+          maximumNumberOfLinks: 15
+        sortProperty: 'dateTime'
+        sortOrder: 'DESC'
+        #dateFormat: 'F jS, Y'
+        dateFormat: 'd.m.Y'
+        itempropDateFormat: 'Y-m-d'
+        thumbnailMaxWidth: 150
+        thumbnailMaxHeight: 150
+      latest:
+        numberOfItems: 10
+        pagination:
+          itemsPerPage: 5
+          maximumNumberOfLinks: 5
+        sortProperty: 'dateTime'
+        sortOrder: 'DESC'
+        #dateFormat: 'F jS, Y'
+        dateFormat: 'd.m.Y'
+        thumbnailMaxWidth: 80
+        thumbnailMaxHeight: 80
+      single:
+        #dateFormat: 'F jS, Y'
+        dateFormat: 'd.m.Y'

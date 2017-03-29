@@ -1,0 +1,6 @@
+prototype(T3Studio.Typo3RuNet:PortfolioItem) < prototype(TYPO3.Neos:Content) {
+        templatePath = 'resource://T3Studio.Typo3RuNet/Private/Templates/TypoScriptObjects/PortfolioItem.html'
+        headline = ${q(node).property('headline')}
+        text = ${q(node).property('text')}
+        image = ${q(node).property('image')}
+}

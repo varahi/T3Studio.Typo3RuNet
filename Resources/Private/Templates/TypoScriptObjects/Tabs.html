@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <f:for each="{tabItemNodes}" as="tabItemNode" iteration="tabIteration">
+    <li{f:if(condition: tabIteration.isFirst, then: ' class="active"')}>
+      <a href="#{tabItemNode.identifier}" data-toggle="tab">{tabItemNode.properties.tabTitle}</a>
+    </li>
+  </f:for>
+</ul>
+<!-- Tab panes -->
+{tabItems -> f:format.raw()}

@@ -1,0 +1,64 @@
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>    
+    <script src="{f:uri.resource(path: '3/js/bootstrap.min.js', package: 'TYPO3.Twitter.Bootstrap')}"></script>  
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.smartmenus.min.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.smartmenus.bootstrap.min.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.lightbox.min.js', package: 'T3Studio.Typo3RuNet')}"></script>  
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.validationEngine.js', package: 'T3Studio.Typo3RuNet')}"></script>
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.validationEngine-ru.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.magnific-popup.min.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/bootstrap-datepicker.min.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/bootstrap-datepicker.ru.min.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'JavaScript/jquery.wm-gridfolio-1.0.js', package: 'T3Studio.Typo3RuNet')}"></script> 
+    <script src="{f:uri.resource(path: 'resource://Lelesys.Plugin.IndexedSearch/Public/JavaScript/IndexedSearch.js')}"></script>
+    <script src="{f:uri.resource(path: 'JavaScript/custom.js', package: 'T3Studio.Typo3RuNet')}"></script>       
+    <script>
+      jQuery(document).ready(function(){
+        jQuery("#contact, #callback").validationEngine();
+        $('.portfolio-grid').WMGridfolio();
+      });       
+    $('input.date').datepicker({
+        weekStart: 1,
+        todayBtn: true,
+        language: "ru",
+        calendarWeeks: true
+    });               
+    </script> 
+    
+<script type="text/javascript">
+  $('.popup-with-form').magnificPopup({
+    type: 'inline',
+    preloader: false,
+    alignTop: 1,
+    focus: '#name',
+    callbacks: {
+      beforeOpen: function() {
+        if($(window).width() < 700) {
+          this.st.focus = false;
+        } else {
+          this.st.focus = '#name';
+        }
+      }
+    }
+  });
+</script>    
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19418431-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Yandex.Metrika counter --> 
+  <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter2354671 = new Ya.Metrika({ id:2354671, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); 
+    </script> 
+    <noscript><
+      div><img src="https://mc.yandex.ru/watch/2354671" style="position:absolute; left:-9999px;" alt="" /></div>    
+    </noscript> 
+<!-- /Yandex.Metrika counter --> 
